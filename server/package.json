@@ -5,9 +5,16 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "scripts": {
     "local:db:start": "docker compose up db -d",
-    "local:prisma:migrate": "dotenv -e .env.local -- pnpx prisma migrate deploy",
+    "local:prisma:migrate": "dotenv -e .env.local -- pnpx prisma migrate dev --skip-seed",
+    "local:prisma:seed": "dotenv -e .env.local -- prisma db seed",
+    "local:prisma:generate": "pnpx prisma generate",
+    "local:prisma:studio": "dotenv -e .env.local -- pnpx prisma studio",
+    "local:prisma:update": "pnpm run local:prisma:migrate && pnpm run local:prisma:seed && pnpm run local:prisma:generate && pnpm run local:prisma:studio",
     "//": "***********************************************************",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

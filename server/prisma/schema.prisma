@@ -13,8 +13,27 @@ datasource db {
 }
 
 //
+model Right {
+  id          Int     @id @default(autoincrement())
+  name        String  @unique
+  description String?
+
+  //
+  roles Role[]
+
+  //
+  @@map("rights")
+}
+
+//
 model Role {
   id          Int     @id @default(autoincrement())
   name        String  @unique
   description String?
+
+  //
+  rights Right[]
+
+  //
+  @@map("roles")
 }
