@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  # Postgres database
+  db:
+    image: postgres:16.1-alpine
+    container_name: db
+    ports:
+      - '5432:5432'
+    restart: always
+    volumes:
+      - db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=tmnrp
+      - POSTGRES_PASSWORD=root
+
+  # Generate a vite latest with react typescript template
+  # generate-app:
+  #   container_name: generate-app
+  #   image: node:20.5.0-alpine3.17
+  #   working_dir: /usr/client
+  #   volumes:
+  #     - ./client/apps/host/:/usr/client
+  #   command: sh -c "npm create vite@latest . -- --template react-ts && npm i"
+
+volumes:
+  db:
