@@ -9,6 +9,7 @@
     "seed": "ts-node prisma/seed.ts"
   },
   "scripts": {
+    "local:start": "dotenv -e .env.local -- nest start --watch",
     "local:db:start": "docker compose up db -d",
     "local:prisma:migrate": "dotenv -e .env.local -- pnpx prisma migrate dev --skip-seed",
     "local:prisma:seed": "dotenv -e .env.local -- prisma db seed",
