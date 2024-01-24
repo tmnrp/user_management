@@ -16,7 +16,7 @@ export const seedRoles = async () => {
     },
     {
       id: 2,
-      name: 'Admin',
+      name: 'ADMIN',
       description: 'Major access',
       rights: {
         connect: [{ id: 1 }, { id: 2 }, { id: 3 }],

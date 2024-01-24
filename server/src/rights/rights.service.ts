@@ -9,6 +9,10 @@ export class RightsService {
   //
   @Get()
   getAllRights() {
-    return this.dbService.right.findMany({});
+    return this.dbService.right.findMany({
+      orderBy: {
+        id: 'asc',
+      },
+    });
   }
 }

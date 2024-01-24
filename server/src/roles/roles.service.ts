@@ -10,6 +10,10 @@ export class RolesService {
   //
   async getAllRoles() {
     //
-    return await this.dbService.role.findMany();
+    return await this.dbService.role.findMany({
+      orderBy: {
+        id: 'asc',
+      },
+    });
   }
 }

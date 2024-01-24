@@ -4,7 +4,7 @@ import { DbService } from '../db/db.service';
 
 //
 describe('RightsService', () => {
-  let service: RightsService;
+  let rightsService: RightsService;
 
   //
   beforeEach(async () => {
@@ -12,11 +12,35 @@ describe('RightsService', () => {
       providers: [RightsService, DbService],
     }).compile();
 
-    service = module.get<RightsService>(RightsService);
+    rightsService = module.get<RightsService>(RightsService);
   });
 
   //
   it('should be defined', () => {
-    expect(service).toBeDefined();
+    expect(rightsService).toBeDefined();
+  });
+
+  //
+  it('Sign up should be return User model without password', async () => {
+    const res = await rightsService.getAllRights();
+
+    //
+    expect(res.length).toBe(4);
+
+    //
+    expect(res[0].id).toBe(1);
+    expect(res[0].name).toBe('RIGHTS_API_READ');
+
+    //
+    expect(res[1].id).toBe(2);
+    expect(res[1].name).toBe('RIGHTS_API_CREATE');
+
+    //
+    expect(res[2].id).toBe(3);
+    expect(res[2].name).toBe('RIGHTS_API_UPDATE');
+
+    //
+    expect(res[3].id).toBe(4);
+    expect(res[3].name).toBe('RIGHTS_API_DELETE');
   });
 });
