@@ -16,6 +16,7 @@
     "local:prisma:generate": "pnpx prisma generate",
     "local:prisma:studio": "dotenv -e .env.local -- pnpx prisma studio",
     "local:prisma:update": "pnpm run local:prisma:migrate && pnpm run local:prisma:seed && pnpm run local:prisma:generate && pnpm run local:prisma:studio",
+    "local:test": "jest --watch",
     "//": "***********************************************************",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

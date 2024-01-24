@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 import { RolesModule } from './roles/roles.module';
-import { PrismaService } from './prisma.service';
+import { DbModule } from './db/db.module';
+import { RightsModule } from './rights/rights.module';
 
 //
 @Module({
-  imports: [RolesModule],
+  imports: [RolesModule, DbModule, RightsModule],
   controllers: [],
-  providers: [PrismaService],
+  providers: [],
 })
 
 //

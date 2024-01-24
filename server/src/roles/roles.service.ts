@@ -1,13 +1,15 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma.service';
+import { DbService } from '../db/db.service';
 
 //
 @Injectable()
 export class RolesService {
   //
-  constructor(private readonly prismaService: PrismaService) {}
+  constructor(private readonly dbService: DbService) {}
 
+  //
   async getAllRoles() {
-    return await this.prismaService.role.findMany();
+    //
+    return await this.dbService.role.findMany();
   }
 }
