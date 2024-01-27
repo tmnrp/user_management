@@ -2,4 +2,24 @@
 GET http://localhost:3000/rights
 
 ###
-GET http://localhost:3000/rights/1a
+GET http://localhost:3000/rights/1
+
+###
+GET http://localhost:3000/rights/a
+
+###
+POST http://localhost:3000/rights
+Content-Type: application/json
+
+{
+    "name": "New Right",
+    "description": "This is the new right i created now"
+}
+
+###
+POST http://localhost:3000/rights
+Content-Type: application/json
+
+{
+    "name": 1
+}

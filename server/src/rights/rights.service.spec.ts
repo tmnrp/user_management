@@ -119,7 +119,6 @@ describe('RightsService', () => {
     });
     //
     expect(res).toBeDefined();
-    console.log(res);
     expect(res[0].id).toBe(2);
   });
 });

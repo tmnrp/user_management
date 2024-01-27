@@ -1,4 +1,4 @@
-import { Delete, Get, Injectable, Patch, Post, Query } from '@nestjs/common';
+import { Delete, Get, Injectable, Patch, Post } from '@nestjs/common';
 import { DbService } from '../db/db.service';
 import { RightCreateDto, RightFilterDto, RightUpdateDto } from './rights.dto';
 
@@ -10,7 +10,7 @@ export class RightsService {
 
   //
   @Get()
-  getAllRights(@Query() params?: RightFilterDto) {
+  getAllRights(params?: RightFilterDto) {
     return this.dbService.right.findMany({
       where: { ...params },
       orderBy: { id: 'asc' },
