@@ -16,4 +16,17 @@ export class RolesService {
       },
     });
   }
+
+  //
+  async getAllRoleById(id: number) {
+    //
+    return await this.dbService.role.findFirst({
+      where: {
+        id,
+      },
+      orderBy: {
+        id: 'asc',
+      },
+    });
+  }
 }

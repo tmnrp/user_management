@@ -43,4 +43,25 @@ describe('RolesService', () => {
     expect(res[2].id).toBe(3);
     expect(res[2].name).toBe('GUEST');
   });
+
+  //
+  it('Testing get role by id', async () => {
+    //
+    let res = await rolesService.getAllRoleById(1);
+    expect(res).toBeDefined();
+    expect(res.id).toBe(1);
+    expect(res.name).toBe('SUPER_ADMIN');
+
+    //
+    res = await rolesService.getAllRoleById(2);
+    expect(res).toBeDefined();
+    expect(res.id).toBe(2);
+    expect(res.name).toBe('ADMIN');
+
+    //
+    res = await rolesService.getAllRoleById(3);
+    expect(res).toBeDefined();
+    expect(res.id).toBe(3);
+    expect(res.name).toBe('GUEST');
+  });
 });

@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { RolesService } from './roles.service';
 
 //
@@ -11,5 +11,11 @@ export class RolesController {
   @Get()
   getAllRoles() {
     return this.rolesService.getAllRoles();
+  }
+
+  //
+  @Get(':id')
+  getAllRoleById(@Param('id') id: number) {
+    return this.rolesService.getAllRoleById(id);
   }
 }

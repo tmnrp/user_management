@@ -5,7 +5,7 @@ import { RightsModule } from './rights/rights.module';
 
 //
 @Module({
-  imports: [RolesModule, DbModule, RightsModule],
+  imports: [DbModule, RightsModule, RolesModule],
   controllers: [],
   providers: [],
 })

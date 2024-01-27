@@ -5,9 +5,9 @@ import { DbService } from '../db/db.service';
 
 //
 @Module({
-  imports: [DbService],
+  imports: [],
   controllers: [RolesController],
-  providers: [RolesService],
+  providers: [DbService, RolesService],
 })
 
 //
