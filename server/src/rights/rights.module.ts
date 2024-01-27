@@ -5,8 +5,8 @@ import { RightsController } from './rights.controller';
 
 //
 @Module({
-  providers: [DbService, RightsService],
   controllers: [RightsController],
+  providers: [DbService, RightsService],
 })
 
 //

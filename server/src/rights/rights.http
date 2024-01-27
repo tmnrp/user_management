@@ -2,4 +2,4 @@
 GET http://localhost:3000/rights
 
 ###
-GET http://localhost:3000/rights/1
+GET http://localhost:3000/rights/1a

@@ -1,6 +1,6 @@
-import { Get, Injectable, Post } from '@nestjs/common';
+import { Delete, Get, Injectable, Patch, Post, Query } from '@nestjs/common';
 import { DbService } from '../db/db.service';
-import { RightCreateDto } from './rights.dto';
+import { RightCreateDto, RightFilterDto, RightUpdateDto } from './rights.dto';
 
 //
 @Injectable()
@@ -10,8 +10,11 @@ export class RightsService {
 
   //
   @Get()
-  getAllRights() {
-    return this.dbService.right.findMany({ orderBy: { id: 'asc' } });
+  getAllRights(@Query() params?: RightFilterDto) {
+    return this.dbService.right.findMany({
+      where: { ...params },
+      orderBy: { id: 'asc' },
+    });
   }
 
   //
@@ -25,6 +28,24 @@ export class RightsService {
   createRight(data: RightCreateDto) {
     return this.dbService.right.create({
       data,
+    });
+  }
+
+  //
+  @Patch()
+  async updateRightById(id: number, data: RightUpdateDto) {
+    const res = await this.getRightById(id);
+    return this.dbService.right.update({
+      where: { id: res.id },
+      data,
+    });
+  }
+
+  //
+  @Delete()
+  deleteRightById(id: number) {
+    return this.dbService.right.delete({
+      where: { id },
     });
   }
 }

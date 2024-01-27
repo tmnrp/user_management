@@ -1,4 +1,10 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  HttpStatus,
+  Param,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { RightsService } from './rights.service';
 
 //
@@ -15,7 +21,13 @@ export class RightsController {
 
   //
   @Get(':id')
-  getRightById(@Param('id') id: number) {
+  getRightById(
+    @Param(
+      'id',
+      new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE }),
+    )
+    id: number,
+  ) {
     return this.rightsService.getRightById(id);
   }
 }

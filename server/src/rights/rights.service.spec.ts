@@ -73,11 +73,53 @@ describe('RightsService', () => {
   //
   it('Create a test RIGHT', async () => {
     //
-    const res = await rightsService.createRight({
+    let res = await rightsService.createRight({
       name: 'TEST_RIGHT_1',
       description: 'Test right description',
     });
-
     expect(res).toBeDefined();
+    expect(res.name === 'TEST_RIGHT_1');
+
+    //
+    res = await rightsService.getRightById(res.id);
+    expect(res).toBeDefined();
+    expect(res.name === 'TEST_RIGHT_1');
+
+    //
+    const { id, ...data } = res;
+    res = await rightsService.updateRightById(id, {
+      ...data,
+      name: 'TEST_RIGHT_1_EDITED',
+    });
+    expect(res).toBeDefined();
+    expect(res.name === 'TEST_RIGHT_1_EDITED');
+
+    //
+    res = await rightsService.deleteRightById(res.id);
+    expect(res).toBeDefined();
+
+    //
+    res = await rightsService.getRightById(res.id);
+    expect(res).toBeNull();
+  });
+
+  //
+  it('Testing filters', async () => {
+    let res = await rightsService.getAllRights({
+      name: 'RIGHTS_API_READ',
+    });
+
+    //
+    expect(res).toBeDefined();
+    expect(res[0].id).toBe(1);
+
+    //
+    res = await rightsService.getAllRights({
+      description: 'Provides access to create a new right',
+    });
+    //
+    expect(res).toBeDefined();
+    console.log(res);
+    expect(res[0].id).toBe(2);
   });
 });
