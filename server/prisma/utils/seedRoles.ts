@@ -1,9 +1,10 @@
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, Prisma } from '@prisma/client';
+import { DefaultArgs } from '@prisma/client/runtime/library';
 
 //
-export const seedRoles = async () => {
-  const prisma = new PrismaClient();
-
+export const seedRoles = async (
+  prisma: PrismaClient<Prisma.PrismaClientOptions, never, DefaultArgs>,
+) => {
   //
   const roles = [
     {
@@ -11,7 +12,16 @@ export const seedRoles = async () => {
       name: 'SUPER_ADMIN',
       description: 'Full access',
       rights: {
-        connect: [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }],
+        connect: [
+          { id: 1 },
+          { id: 2 },
+          { id: 3 },
+          { id: 4 },
+          { id: 5 },
+          { id: 6 },
+          { id: 7 },
+          { id: 8 },
+        ],
       },
     },
     {
@@ -19,7 +29,14 @@ export const seedRoles = async () => {
       name: 'ADMIN',
       description: 'Major access',
       rights: {
-        connect: [{ id: 1 }, { id: 2 }, { id: 3 }],
+        connect: [
+          { id: 1 },
+          { id: 2 },
+          { id: 3 },
+          { id: 5 },
+          { id: 6 },
+          { id: 7 },
+        ],
       },
     },
     {
@@ -27,7 +44,7 @@ export const seedRoles = async () => {
       name: 'GUEST',
       description: 'Limited access',
       rights: {
-        connect: [{ id: 1 }],
+        connect: [{ id: 1 }, { id: 4 }],
       },
     },
   ];

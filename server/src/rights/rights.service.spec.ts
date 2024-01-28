@@ -25,7 +25,7 @@ describe('RightsService', () => {
     const res = await rightsService.getAllRights();
 
     //
-    expect(res.length).toBe(4);
+    expect(res.length).toBe(8);
 
     //
     expect(res[0].id).toBe(1);
@@ -42,6 +42,22 @@ describe('RightsService', () => {
     //
     expect(res[3].id).toBe(4);
     expect(res[3].name).toBe('RIGHTS_API_DELETE');
+
+    // --------------------------------------
+    expect(res[4].id).toBe(5);
+    expect(res[4].name).toBe('ROLES_API_READ');
+
+    //
+    expect(res[5].id).toBe(6);
+    expect(res[5].name).toBe('ROLES_API_CREATE');
+
+    //
+    expect(res[6].id).toBe(7);
+    expect(res[6].name).toBe('ROLES_API_UPDATE');
+
+    //
+    expect(res[7].id).toBe(8);
+    expect(res[7].name).toBe('ROLES_API_DELETE');
   });
 
   //
@@ -68,6 +84,30 @@ describe('RightsService', () => {
     expect(res).toBeDefined();
     expect(res.id).toBe(4);
     expect(res.name).toBe('RIGHTS_API_DELETE');
+
+    // -----------------------------------------
+    res = await rightsService.getRightById(5);
+    expect(res).toBeDefined();
+    expect(res.id).toBe(5);
+    expect(res.name).toBe('ROLES_API_READ');
+
+    //
+    res = await rightsService.getRightById(6);
+    expect(res).toBeDefined();
+    expect(res.id).toBe(6);
+    expect(res.name).toBe('ROLES_API_CREATE');
+
+    //
+    res = await rightsService.getRightById(7);
+    expect(res).toBeDefined();
+    expect(res.id).toBe(7);
+    expect(res.name).toBe('ROLES_API_UPDATE');
+
+    //
+    res = await rightsService.getRightById(8);
+    expect(res).toBeDefined();
+    expect(res.id).toBe(8);
+    expect(res.name).toBe('ROLES_API_DELETE');
   });
 
   //

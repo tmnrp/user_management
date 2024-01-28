@@ -4,8 +4,8 @@ const prisma = new PrismaClient();
 
 //
 async function main() {
-  await seedRights();
-  await seedRoles();
+  await seedRights(prisma);
+  await seedRoles(prisma);
 }
 
 //
