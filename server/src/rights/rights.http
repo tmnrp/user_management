@@ -21,5 +21,4 @@ POST http://localhost:3000/rights
 Content-Type: application/json
 
 {
-    "name": 1
 }

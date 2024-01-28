@@ -10,11 +10,10 @@ import {
   Post,
   Query,
   UsePipes,
+  ValidationPipe,
 } from '@nestjs/common';
 import { RightsService } from './rights.service';
 import { RightCreateDto, RightFilterDto, RightUpdateDto } from './rights.dto';
-import { ZodValidationPipe } from '../utils';
-import { RightCreateSchema } from './rights.schema';
 
 //
 @Controller('rights')
@@ -42,7 +41,7 @@ export class RightsController {
 
   //
   @Post()
-  @UsePipes(new ZodValidationPipe(RightCreateSchema))
+  @UsePipes(ValidationPipe)
   createRight(@Body() data: RightCreateDto) {
     return this.rightsService.createRight(data);
   }
