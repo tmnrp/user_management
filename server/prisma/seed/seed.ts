@@ -1,11 +1,12 @@
 import { PrismaClient } from '@prisma/client';
-import { seedRights, seedRoles } from './utils';
+import { seedUsers } from '.';
 const prisma = new PrismaClient();
 
 //
 async function main() {
-  await seedRights(prisma);
-  await seedRoles(prisma);
+  await seedUsers(prisma);
+  // await seedRights(prisma);
+  // await seedRoles(prisma);
 }
 
 //
