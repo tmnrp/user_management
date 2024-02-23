@@ -7,7 +7,7 @@ export const seedUsers = async (
 ) => {
   //
   console.log('Creating super user');
-  const resSuper = await prisma.user.upsert({
+  const userSuper = await prisma.user.upsert({
     where: { id: 1 },
     update: {},
     create: {
@@ -17,11 +17,11 @@ export const seedUsers = async (
       phoneNumber: '001',
     },
   });
-  console.log('Created super user', resSuper);
+  console.log('Created super user', userSuper);
 
   //
   console.log('Creating admin user');
-  const resAdmin = await prisma.user.upsert({
+  const userAdmin = await prisma.user.upsert({
     where: { id: 2 },
     update: {},
     create: {
@@ -31,7 +31,7 @@ export const seedUsers = async (
       phoneNumber: '002',
     },
   });
-  console.log('Created admin user', resAdmin);
+  console.log('Created admin user', userAdmin);
 
   //
   console.log('Seeding users...');
@@ -48,6 +48,7 @@ export const seedUsers = async (
     },
   ];
 
+  //
   const users = [
     {
       id: 10,
